@@ -7,10 +7,10 @@ let coin = {
     },
     toString: function() {
         if (this.state == 0){
-            return "Heads"
+            return "Heads "
         }
         else {
-            return "Tails"
+            return "Tails "
         }
     },
     toHTML: function() {
@@ -23,17 +23,23 @@ let coin = {
         }
         return image
     },
-    display20Flips: function() {
-        const flipString = document.createElement('h1')
-        for (let index = 0; index < 20; index ++){
-            this.flip(20)
-            flipString.append(toString())
-            bodyElement.append(flipString)
-        }
-        return 
-    },
-    display20Images: function() {
-        const flipImage = bodyElement.append(image)
-        return flipImage
-    }
 };
+function display20Flips() {
+    let flipString = document.createElement('h1')
+    for (let index = 0; index < 20; index ++){
+        coin.flip()
+        flipString.append(coin.toString())
+    }
+    bodyElement.append(flipString)
+}
+display20Flips()
+
+function display20Images() {
+    let flipImage = document.createElement('div')
+    for (let index = 0; index < 20; index ++) {
+        coin.flip()
+        flipImage.append(coin.toHTML())
+    }
+    bodyElement.append(flipImage)
+}
+display20Images()
